@@ -6,7 +6,7 @@ const Header = (props) => {
     return (
         <div className={style.navWrapper}>
             <div className={style.nav}>
-                <NavLink className={style.navItems} to={process.env.PUBLIC_URL + '/'}>TODOS</NavLink>
+                <NavLink className={style.navItems} to="/">TODOS</NavLink>
                 <NavLink className={style.navItems} to="/users">USERS</NavLink>
                 <NavLink className={style.navItems} to="/posts">POSTS</NavLink>
                 <NavLink className={style.navItems} to="/contacts">CONTACTS</NavLink>

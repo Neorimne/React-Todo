@@ -3,10 +3,12 @@
    display: flex;
    justify-content: space-around;
    align-items: stretch;
+   margin: 0;
+   padding: 0;
 }
 
 .navWrapper {
-    grid-area: header;
+    flex-basis: 1fr;
 }
 
 .navItems{
