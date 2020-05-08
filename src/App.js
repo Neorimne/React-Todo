@@ -1,25 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header/Header';
+import {
+  BrowserRouter as Router,
+  Route,
+} from 'react-router-dom';
+import TodosContainer from './components/Todos/TodosContainer';
+import store from './redux/store';
+import Footer from './components/Footer/Footer';
+import UsersContainer from './components/Users/UsersContainer';
+import PostsContainer from './components/Posts/PostsContainer';
+import Contacts from './components/Contacts/Contacts';
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+     <Router>
+      <div className="appWrapper">
+        <Header />
+        <Route exact path="/" 
+          render = {() => <TodosContainer store = {store} />} />
+        <Route path="/users"
+          render ={() => <UsersContainer store={store} />} />
+        <Route path="/posts"
+          render = {() => <PostsContainer store={store} />} />
+        <Route path="/contacts"
+          render = {() => <Contacts />} />
+        <Footer />
+      </div>
+    </Router> 
   );
 }
 

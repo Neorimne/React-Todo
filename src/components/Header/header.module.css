@@ -1,0 +1,22 @@
+.nav {
+   background-color: #1f242c;
+   display: flex;
+   justify-content: space-around;
+   align-items: stretch;
+}
+
+.navWrapper {
+    grid-area: header;
+}
+
+.navItems{
+    width: 20vw;
+    color: rgba(179, 181, 185, 0.678);
+    text-align: center;
+    margin: 20px 0;
+}
+
+.navItems:hover {
+    border-left: 1px solid rgba(88, 88, 88, 0.356);
+    border-right: 1px solid rgba(88, 88, 88, 0.356);
+}

@@ -1,0 +1,27 @@
+.usersWrapper{
+    grid-area: content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: #282c34;
+    background: linear-gradient(183deg, rgba(40,44,52,1) 12%, rgba(31,46,64,1) 100%);
+}
+.userContainer{
+    width: 40vw;
+    margin: 20px 50px;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0px 0px 34px -7px rgba(0,0,0,0.75);
+}
+.userInfo{
+    text-align: center;
+    width: 50%;
+}
+
+
+.userImage img{
+    width: 250px;
+    height: 200px;
+    border-radius: 50%;
+}

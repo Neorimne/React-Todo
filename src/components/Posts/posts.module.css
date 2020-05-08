@@ -1,0 +1,17 @@
+.postsWrapper {
+    grid-area: content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #282c34;
+    color: white;
+}
+.postItem{
+    display: flex;
+    flex-direction: column;
+    margin: 50px 0;
+    align-items: center;
+    width: 90vw;
+    text-align: center;
+    box-shadow: 0px 0px 34px -7px rgba(0,0,0,0.75);
+}
