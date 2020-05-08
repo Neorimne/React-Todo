@@ -18,7 +18,7 @@ const App = () => {
      <Router>
       <div className="appWrapper">
         <Header />
-        <Route exact path="/" 
+        <Route exact path={process.env.PUBLIC_URL + '/'}
           render = {() => <TodosContainer store = {store} />} />
         <Route path="/users"
           render ={() => <UsersContainer store={store} />} />
