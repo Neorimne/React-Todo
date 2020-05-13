@@ -1,7 +1,6 @@
 import React from 'react';
 import style from './users.module.css';
 import {useEffect, useState } from "react";
-import axios from 'axios';
 import Preloader from '../common/Preloader';
 
 const Users = (props) => {
@@ -9,27 +8,16 @@ const Users = (props) => {
     const [isFetching, setIsFetching] = useState(false);
     
     useEffect (() => {
-        setIsFetching(true)
-        const fetchData = async () => {
-            const response = await axios.get(
-                'https://jsonplaceholder.typicode.com/users'
-            );
-            props.setUsersData(response.data);
-            setIsFetching(false)
-        };
-        fetchData();
+        setIsFetching(true);
+        props.getUsers();            
+        setIsFetching(false);
     }, []);
     useEffect (() => {
-        setIsFetching(true)
-        const fetchData = async () => {
-            const response = await axios.get(
-                'https://api.thecatapi.com/v1/images/search?limit=11'
-            );
-            props.setUsersImages(response.data.map(element => element.url));
-            setIsFetching(false)
-        };
-        fetchData();
+            setIsFetching(true);
+            props.getUserImages()
+            setIsFetching(false);
     }, []);
+    console.log("props: ", props.users)
     let usersItems = props.users.map(element => 
         <div key={element.id} className={style.userContainer}>
             <div className={style.userImage}>

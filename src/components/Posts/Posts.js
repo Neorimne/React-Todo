@@ -1,18 +1,12 @@
-
 import style from './posts.module.css';
-import axios from 'axios';
 import React, { useEffect } from 'react';
 
 const Posts = (props) => {
     
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await axios.get('https://jsonplaceholder.typicode.com/posts?userId=1');
-            props.setPosts(response.data)
-        };
-        fetchData();
-    }, [])
-
+        props.getPosts();
+    }, []);
+    
     let postItems = props.posts.posts.map(element => <div key={element.id} className={style.postItem}>
         <h2>{element.title}</h2>
         <p>{element.body}</p>

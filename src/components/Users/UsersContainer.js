@@ -1,6 +1,6 @@
 import Users from "./Users";
 import { connect } from "react-redux";
-import { setUsersData, setUsersImages } from "../../redux/usersReducer";
+import { getUsers, getUserImages } from "../../redux/usersReducer";
 
 
 let mapStateToProps = (state) => {
@@ -10,5 +10,5 @@ let mapStateToProps = (state) => {
     }
 }
 
-const UsersContainer = connect(mapStateToProps,{setUsersData,setUsersImages})(Users);
+const UsersContainer = connect(mapStateToProps,{ getUsers, getUserImages})(Users);
 export default UsersContainer;

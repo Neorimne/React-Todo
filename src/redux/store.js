@@ -1,8 +1,8 @@
-import {combineReducers, createStore} from 'redux';
+import {combineReducers, createStore, applyMiddleware} from 'redux';
 import todoReducer from './todoReducer';
 import usersReducer from './usersReducer';
 import postsReducer from './postsReducer';
-
+import thunkMiddleware from 'redux-thunk';
 
 
 let reducers = combineReducers({
@@ -13,6 +13,6 @@ let reducers = combineReducers({
 
 
 
-let store = createStore(reducers);
+let store = createStore(reducers, applyMiddleware(thunkMiddleware));
 
 export default store;

@@ -12,13 +12,13 @@ let initState = {
 
 const todoReducer = (state = initState, action) => {
     switch(action.type) {
-        case UPDATE_TASK_TEXT: {
+        case UPDATE_TASK_TEXT: 
             return {
                 ...state,
                 taskNewText: action.taskNewText
-            }
-        };
-        case ADD_TASK: {
+            };
+        
+        case ADD_TASK: 
             if (state.taskNewText === '') return state
             let task = {
                 id : Date.now(),
@@ -29,9 +29,8 @@ const todoReducer = (state = initState, action) => {
                 ...state,
                 tasksData: [...state.tasksData, task],
                 taskNewText: ''
-            }
-        };
-        case TOGGLE_IS_COMPLETED: {
+            };
+        case TOGGLE_IS_COMPLETED: 
             return {
                 ...state,
                 tasksData: state.tasksData.map(element => {
@@ -41,8 +40,7 @@ const todoReducer = (state = initState, action) => {
                     return element;
                 })
             };
-        };
-        case TOGGLE_IS_NOT_COMPLETED: {
+        case TOGGLE_IS_NOT_COMPLETED: 
             return {
                 ...state,
                 tasksData: state.tasksData.map(element => {
@@ -52,19 +50,16 @@ const todoReducer = (state = initState, action) => {
                     return element;
                 })
             };
-        }
-        case REMOVE_TASK: {
+        case REMOVE_TASK: 
             return {
                 ...state,
                 tasksData: state.tasksData.filter(element => element.id !== action.elementId)  
                 }
-        };
-        case REMOVE_ALL_TASKS: {
+        case REMOVE_ALL_TASKS: 
             return {
                 tasksData: [],
                 taskNewText: ''
             }
-        }
         default:
             return state;
     }

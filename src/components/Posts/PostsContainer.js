@@ -1,6 +1,6 @@
 import {connect } from 'react-redux';
 import Posts from './Posts';
-import { setPosts } from '../../redux/postsReducer';
+import { getPosts } from '../../redux/postsReducer';
 
 let mapStateToProps = (state) => {
     return{
@@ -8,6 +8,6 @@ let mapStateToProps = (state) => {
     }
 };
 
-const PostsContainer = connect(mapStateToProps, {setPosts})(Posts);
+const PostsContainer = connect(mapStateToProps, {getPosts})(Posts);
 
 export default PostsContainer;
