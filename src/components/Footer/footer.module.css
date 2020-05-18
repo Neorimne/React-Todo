@@ -1,9 +1,7 @@
 .footerWrapper {
-    min-height: 20vh;
+    min-height: 15vh;
     flex-grow: 1;
     background-color: #1f242c;
-    color: grey;
-    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,9 +9,6 @@
     padding: 20px 0;
 };
 
-.aboutUsBlock1{
-    background-color: #fff;
-}
 .socialLinks{
    margin-top: 20px;
 }

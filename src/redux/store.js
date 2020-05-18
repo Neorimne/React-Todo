@@ -3,16 +3,21 @@ import todoReducer from './todoReducer';
 import usersReducer from './usersReducer';
 import postsReducer from './postsReducer';
 import thunkMiddleware from 'redux-thunk';
+import { reducer as formReducer } from 'redux-form';
+import contactReducer from './contactReducer';
 
 
-let reducers = combineReducers({
+
+const reducers = combineReducers({
     todos: todoReducer,
     users: usersReducer,
-    posts: postsReducer
+    posts: postsReducer,
+    contactMessages: contactReducer,
+    form: formReducer
 });
 
 
 
-let store = createStore(reducers, applyMiddleware(thunkMiddleware));
+const store = createStore(reducers, applyMiddleware(thunkMiddleware));
 
 export default store;

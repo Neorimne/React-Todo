@@ -12,19 +12,14 @@ const Users = (props) => {
         props.getUsers();            
         setIsFetching(false);
     }, []);
-    useEffect (() => {
-            setIsFetching(true);
-            props.getUserImages()
-            setIsFetching(false);
-    }, []);
-    console.log("props: ", props.users)
     let usersItems = props.users.map(element => 
         <div key={element.id} className={style.userContainer}>
             <div className={style.userImage}>
-                <img src ={props.usersImages[element.id]} alt ="user ava" />
+                <img src ={element.avatar} alt ="user ava" />
             </div>
             <div className={style.userInfo}>
-                <h3>{element.name}</h3>
+                <h2>{element.first_name}</h2>
+                <h2>{element.last_name}</h2>
                 <div>{element.email}</div>
                 <div>{element.website}</div>
             </div>
@@ -32,7 +27,7 @@ const Users = (props) => {
     
     return (
         <div className={style.usersWrapper}>
-                {isFetching ? <Preloader /> : usersItems}
+                {isFetching ? <Preloader /> :  usersItems}
         </div>
          
     )

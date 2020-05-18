@@ -10,13 +10,11 @@ export const getPostsData = async () => {
     catch(err) {
         console.log(err)
     };
-}
+};
 
 export const getUsersData = async () => {
     try {
-        const response = await axios.get(
-            'https://jsonplaceholder.typicode.com/users'
-        );
+        const response = await axios.get('https://reqres.in/api/users');
         return await response.data;
     }
     catch(err) {
@@ -24,15 +22,4 @@ export const getUsersData = async () => {
     }
 };
 
-export const getUserImagesData = async () => {
-    try {
-        const response = await axios.get(
-            'https://api.thecatapi.com/v1/images/search?limit=11'
-        );
-        const imgURLS = await response.data.map(element => element.url);
-        return imgURLS;
-    }
-    catch(err) {
-        console.log(err)
-    }  
-};
+

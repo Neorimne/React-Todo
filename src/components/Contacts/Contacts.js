@@ -1,15 +1,47 @@
 import React, { useState } from 'react';
 import style from './contacts.module.css';
+import FeedbackForm from './Form';
 
 
 
 const Contacts = (props) =>{
     
     const [showOverlay, setShowOverlay] = useState(false);
+    
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [comment, setComment] = useState('');
 
+    
     const handleSumbit = (e) => {
         e.preventDefault();
+        props.setNewMessage({
+            name,
+            email,
+            comment
+        })
         setShowOverlay(true);
+    }
+
+    console.log("props: ", props)
+
+    const handleUserInput = (event) => {
+        const fieldName = event.target.name;
+        const fieldValue = event.target.value;
+
+        switch(fieldName) {
+            case "name":
+                setName(fieldValue);
+                break;
+            case "email":
+                setEmail(fieldValue);
+                break;
+            case "comment":
+                setComment(fieldValue);
+                break;
+            default:
+                break;
+        }
     }
     
     return (
@@ -22,21 +54,9 @@ const Contacts = (props) =>{
                 <h2>LEAVE YOUR FEEDBACK!</h2>
             </div>
             <div className={style.formWrapper}>
-                <form className={style.form} onSubmit={handleSumbit}>
-                    <label>
-                        <div>YOUR NAME:</div>
-                        <input type="text" name="name" />
-                    </label>
-                    <label>
-                        <div>YOUR EMAIL:</div>
-                        <input type="text" name="name" />
-                    </label>
-                    <label>
-                        <div>YOUR COMMENT:</div>
-                        <textarea rows="10" cols="50" />
-                    </label>
-                    <input type="submit" value="SUBMIT" />
-                </form>
+                <FeedbackForm handleSumbit={handleSumbit}
+                     handleUserInput={handleUserInput} 
+                     name={name} email={email} comment={comment} />
             </div>
         </div>
     )

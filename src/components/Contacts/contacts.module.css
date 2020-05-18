@@ -1,14 +1,14 @@
 .contactsWrapper {
-
     color: grey;
     background-color: #282c34;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding: 50px 0;
 
 }
 .contactsHeader{
-    width: 90vw;
+    width: 100vw;
     text-align: center;
 }
 

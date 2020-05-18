@@ -12,7 +12,7 @@ import Preloader from './components/common/Preloader';
 
 const UsersContainer = lazy(() => import('./components/Users/UsersContainer'));
 const PostsContainer = lazy(() => import('./components/Posts/PostsContainer'));
-const Contacts = lazy(() => import('./components/Contacts/Contacts'));
+const Contacts = lazy(() => import('./components/Contacts/contactsContainer'));
 
 const App = () => {
   
@@ -28,7 +28,7 @@ const App = () => {
                 <Route path="/posts"
                       render={() => <PostsContainer store = {store} />} />
                 <Route path="/contacts"
-                      render={() => <Contacts />} />
+                      render={() => <Contacts store = {store} />} />
           </Suspense>
         <Footer />
       </div>
