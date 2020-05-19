@@ -6,7 +6,7 @@
     background: linear-gradient(183deg, rgba(40,44,52,1) 12%, rgba(31,46,64,1) 100%);
 }
 .userContainer{
-    width: 40vw;
+    width: 30vw;
     margin: 20px 50px;
     padding: 20px 0;
     display: flex;
@@ -20,7 +20,16 @@
 
 
 .userImage img{
-    width: 250px;
-    height: 200px;
+    width: 200x;
+    height: 150px;
     border-radius: 50%;
 }
+
+
+@media only screen and (max-width: 1100px) {
+    .userContainer{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+  }

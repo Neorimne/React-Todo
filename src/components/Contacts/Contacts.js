@@ -23,7 +23,6 @@ const Contacts = (props) =>{
         setShowOverlay(true);
     }
 
-    console.log("props: ", props)
 
     const handleUserInput = (event) => {
         const fieldName = event.target.name;
