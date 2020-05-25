@@ -12,7 +12,7 @@ const Users = (props) => {
         props.getUsers();            
         setIsFetching(false);
     }, []);
-    let usersItems = props.users.map(element => 
+    const usersItems = props.users.map(element => 
         <div key={element.id} className={style.userContainer}>
             <div className={style.userImage}>
                 <img src ={element.avatar} alt ="user ava" />
@@ -20,8 +20,7 @@ const Users = (props) => {
             <div className={style.userInfo}>
                 <h2>{element.first_name}</h2>
                 <h2>{element.last_name}</h2>
-                <div>{element.email}</div>
-                <div>{element.website}</div>
+                <div className={style.userEmail}>{element.email}</div>
             </div>
         </div>)
     
