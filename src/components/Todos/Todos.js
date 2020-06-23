@@ -12,6 +12,7 @@ const Todos = (props) => {
     const newTaskElement = React.createRef();
     const [showState, setShowState] = useState(DEFAULT);
     const [todoArr, setTodoArr] = useState(props.tasksData);
+    const [showPopUp, setShowPopUp] = useState(false);
 
     useEffect(() => {
         setTodoArr(props.tasksData);
@@ -32,12 +33,16 @@ const Todos = (props) => {
     }, [showState]);
 
     const addTask = () => {
+        if(!newTaskElement.current.value){
+            setShowPopUp(true);
+        }
         setTodoArr([...props.tasksData]);
         props.addTask();
     };
 
     const onTextChange = () => {
         let taskNewText = newTaskElement.current.value;
+        if (taskNewText) setShowPopUp(false);
         props.updateNewTaskText(taskNewText);
     };
 
@@ -57,7 +62,10 @@ const Todos = (props) => {
                 <form onSubmit={(event) => event.preventDefault()} className={style.form}>
                     <label htmlFor="newTask">
                         NEW TASK
-                </label>
+                    </label>
+                    <div className={style.popup}>
+                        <span className={ showPopUp ? style.popupShow  :  style.popuptext }>You should type tasks here!</span>
+                    </div>
                     <input id="newTask"
                         onChange={onTextChange}
                         value={props.taskNewText}
