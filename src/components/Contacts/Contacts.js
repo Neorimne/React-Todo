@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addNewMessage } from '../../redux/contactReducer';
 import style from './contacts.module.css';
 import FeedbackForm from './Form';
 
 
 
-const Contacts = (props) =>{
+const Contacts = () =>{
     
     const [showOverlay, setShowOverlay] = useState(false);
+    const dispatch = useDispatch();
+
     
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -15,13 +19,12 @@ const Contacts = (props) =>{
     
     const handleSumbit = (e) => {
         e.preventDefault();
-        props.setNewMessage({
-            name,
-            email,
-            comment
-        })
+        dispatch(addNewMessage({name, email, comment}));
         setShowOverlay(true);
-    }
+        setName('');
+        setEmail('');
+        setComment('');
+    };
 
 
     const handleUserInput = (event) => {

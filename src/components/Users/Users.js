@@ -2,17 +2,29 @@ import React from 'react';
 import style from './users.module.css';
 import {useEffect, useState } from "react";
 import Preloader from '../common/Preloader';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUsers, selectAllUsers } from '../../redux/usersReducer';
 
-const Users = (props) => {
+const Users = () => {
     
+    const dispatch = useDispatch();
+    const users = useSelector(selectAllUsers);
+    const usersStatus = useSelector(state => state.users.status);
+
     const [isFetching, setIsFetching] = useState(false);
     
     useEffect (() => {
-        setIsFetching(true);
-        props.getUsers();            
-        setIsFetching(false);
-    }, []);
-    const usersItems = props.users.map(element => 
+        if(usersStatus === 'idle') {
+            setIsFetching(true);
+            dispatch(fetchUsers());            
+        }
+    }, [usersStatus, dispatch]);
+
+    useEffect(() => {
+        if (usersStatus === 'succeeded') setIsFetching(false);
+    }, [usersStatus]);
+
+    const usersItems = users.map(element => 
         <div key={element.id} className={style.userContainer}>
             <div className={style.userImage}>
                 <img src ={element.avatar} alt ="user ava" />

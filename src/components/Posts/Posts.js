@@ -1,13 +1,21 @@
 import style from './posts.module.css';
 import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPosts, selectAllPosts } from '../../redux/postsReducer';
 
-const Posts = (props) => {
+const Posts = () => {
     
+    const postsStatus = useSelector(state => state.posts.status);
+    const posts = useSelector(selectAllPosts);
+    const dispatch = useDispatch();
+
     useEffect(() => {
-        props.getPosts();
-    }, []);
-    
-    let postItems = props.posts.posts.map(element => <div key={element.id} className={style.postItem}>
+        if (postsStatus === 'idle') {
+            dispatch(fetchPosts())
+        }
+    }, [postsStatus, dispatch]);
+
+    let postItems = posts.map(element => <div key={element.id} className={style.postItem}>
         <h2>{element.title}</h2>
         <p>{element.body}</p>
         <p>There are many variations of passages of Lorem Ipsum available,
@@ -26,7 +34,7 @@ const Posts = (props) => {
 
     return (
         <div className={style.postsWrapper}>
-            {postItems}
+            {postItems ? postItems : <p>fok u</p>}
         </div>
     )
 }

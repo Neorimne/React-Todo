@@ -1,30 +1,38 @@
+
 import { getPostsData } from "../api/api";
+const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
-const SET_POSTS = 'SET_POSTS';
-
-let initState = {
-    posts: []
+const initialState = {
+    postsArr: [],
+    status: 'idle',
+    error: null
 };
 
-const postsReducer = (state = initState, action) => {
-    switch(action.type){
-        case SET_POSTS: 
-            return {
-                ...state,
-                posts: action.posts
-            };
-        default:
-            return state
+export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
+    const response = await getPostsData();
+    return response;
+});
+
+
+export const postsSlice = createSlice({
+    name: 'posts',
+    initialState,
+    reducers: {},
+    extraReducers: {
+        [fetchPosts.pending] : (state, action) => {
+            state.status = 'loading'
+        },
+        [fetchPosts.fulfilled] : (state, action) => {
+            state.status = 'succeeded';
+            state.postsArr = state.postsArr.concat(action.payload);
+        },
+        [fetchPosts.rejected] : (state, action) => {
+            state.status = 'failed';
+            state.error = action.error.message;
+        }
     }
-};
+});
 
-export const setPosts = (posts) => ({type: SET_POSTS, posts});
+export const selectAllPosts = (state) => state.posts.postsArr;
 
-export const getPosts = () => {
-    return async (dispatch) => {
-        let data = await getPostsData();
-        dispatch(setPosts(data));
-    }
-}
-
-export default postsReducer;
+export default postsSlice.reducer;

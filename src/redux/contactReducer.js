@@ -1,22 +1,29 @@
-const SET_NEW_MESSAGE = 'SET_NEW_MESSAGE';
+const { createSlice } = require("@reduxjs/toolkit");
 
-let initState = {
-    messages: []
-};
+const initialState = [];
 
-const contactReducer = (state = initState, action) => {
-    switch (action.type) {
-        case SET_NEW_MESSAGE:
-            return {
-                ...state,
-                messages: [...state.messages, action.newMessage]
+export const contactSlice = createSlice({
+    name: 'contactMessages',
+    initialState,
+    reducers: {
+        addNewMessage: {
+            reducer (state, action)  {
+                state.push(action.payload);
+            },
+            prepare ({name, email, comment}) {
+                return {
+                    payload: {
+                        id: Date.now(),
+                        name,
+                        email,
+                        comment
+                    }
+                }
             }
-        default:
-            return state;    
+        }
     }
-};
+});
 
+export const {addNewMessage} = contactSlice.actions;
 
-export const setNewMessage = (newMessage) => ({type: SET_NEW_MESSAGE, newMessage});
-
-export default contactReducer;
+export default contactSlice.reducer;
