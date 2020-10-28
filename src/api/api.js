@@ -1,7 +1,5 @@
 import axios from "axios";
 
-
-
 export const getPostsData = async () => {
     try {
         const response = await axios.get('https://jsonplaceholder.typicode.com/posts?userId=1');

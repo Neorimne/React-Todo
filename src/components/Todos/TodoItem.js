@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './todos.module.css';
+import PropTypes from 'prop-types';
 
 const TodoItem = (props) => {
     return (
@@ -24,5 +25,11 @@ const TodoItem = (props) => {
             </div> 
     )
 };
+
+TodoItem.propTypes = {
+    element: PropTypes.object,
+    toggleEventHandler: PropTypes.func,
+    removeTask: PropTypes.func,
+}
 
 export default TodoItem;

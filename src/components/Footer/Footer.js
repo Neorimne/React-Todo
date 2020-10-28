@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './footer.module.css';
 
-const Footer = (props) => {
+const Footer = () => {
     return (
         <div className={style.footerWrapper}>
             <div className={style.socialLinks}>
