@@ -45,7 +45,7 @@ const Todos = () => {
         setTodoArr(tasksInProgress);
         break;
     }
-  }, [showState]);
+  }, [showState, allTasks, completedTasks, tasksInProgress]);
 
   const TaskAdded = () => {
     if (!taskText) {
@@ -72,6 +72,7 @@ const Todos = () => {
     dispatch(removeAllTasks());
   };
   let toDoItems: Array<any> = [];
+
   if (todoArr) {
     toDoItems = todoArr.map((element: ITask) => (
       <TodoItem

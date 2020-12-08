@@ -4,9 +4,6 @@ import { Route, HashRouter } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import Preloader from "./components/common/Preloader";
 import Todos from "./components/Todos/Todos";
-//import Users from './components/Users/Users';
-//import Posts from './components/Posts/Posts';
-//import Contacts from './components/Contacts/Contacts';
 
 const Users = lazy(() => import("./components/Users/Users"));
 const Posts = lazy(() => import("./components/Posts/Posts"));

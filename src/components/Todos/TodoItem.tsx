@@ -2,19 +2,23 @@ import React from "react";
 import style from "./todos.module.css";
 import { ITask } from "../../redux/todoReducer";
 
-interface ITodoItemProps {
+export type TodoItemProps = {
   element: ITask;
   toggleEventHandler: (id: number) => void;
   removeTask: (id: number) => void;
-}
+};
 
-const TodoItem = (props: ITodoItemProps) => {
+const TodoItem: React.FC<TodoItemProps> = ({
+  element,
+  toggleEventHandler,
+  removeTask,
+}) => {
   return (
     <div
-      key={props.element.id}
+      key={element.id}
       className={style.todoItem}
       style={
-        props.element.isCompleted
+        element.isCompleted
           ? { backgroundColor: "rgba(80, 209, 245, 0.452)" }
           : { backgroundColor: "rgba(196, 49, 13, 0.692)" }
       }
@@ -22,10 +26,10 @@ const TodoItem = (props: ITodoItemProps) => {
       <div className={style.itemButton}>
         <button
           onClick={() => {
-            props.toggleEventHandler(props.element.id);
+            toggleEventHandler(element.id);
           }}
         >
-          {props.element.isCompleted ? "IN PROGRESS" : "COMPLETED"}
+          {element.isCompleted ? "IN PROGRESS" : "COMPLETED"}
         </button>
       </div>
 
@@ -33,13 +37,13 @@ const TodoItem = (props: ITodoItemProps) => {
         <button
           className={style.removeButton}
           onClick={() => {
-            props.removeTask(props.element.id);
+            removeTask(element.id);
           }}
         >
           REMOVE
         </button>
       </div>
-      <div className={style.taskText}>{props.element.taskText}</div>
+      <div className={style.taskText}>{element.taskText}</div>
     </div>
   );
 };
